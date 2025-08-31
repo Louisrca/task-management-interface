@@ -52,6 +52,24 @@
         }
       }
     }
+    .isActive {
+      background: #000000;
+      color: white;
+      cursor: pointer;
+      .pill-icon {
+        color: white;
+        transition: color 0.3s, fill 0.3s;
+      }
+    }
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.8rem;
+    background-color: rgba(241, 162, 255, 0.277);
+    margin-top: 1rem;
+    padding: 1rem 0.8rem;
   }
   .pill-title {
     display: flex;
@@ -61,8 +79,7 @@
     font-weight: bold;
     text-decoration: none;
     color: inherit;
-    padding-top: 1.5rem;
-    font-family: "ChillaxFont";
     font-weight: 800;
+    font-family: "ChillaxFont", sans-serif;
   }
 }

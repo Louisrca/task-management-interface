@@ -5,6 +5,11 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat.ttf") format("truetype");
+}
+
 :host {
   --bright-blue: oklch(51.01% 0.274 263.83);
   --electric-violet: oklch(53.18% 0.28 296.97);
@@ -58,4 +63,54 @@ h1 {
 h2 {
   margin: 1.4rem 0;
   font-size: 1.2rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "ChillaxFont", sans-serif;
+}
+
+span,
+p,
+a,
+li,
+td,
+th,
+input,
+button,
+select {
+  font-family: "Montserrat", sans-serif;
+}
+
+button {
+  border-radius: 0.4rem;
+  border: none;
+  padding: 0.2rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.priority {
+  padding: 0.4rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  word-break: break-word;
+  display: inline-block;
+}
+
+.high {
+  background-color: rgb(250, 189, 191);
+  color: black;
+}
+.medium {
+  background-color: rgb(201, 194, 239);
+  color: black;
+}
+.low {
+  background-color: rgb(214, 253, 191);
+  color: black;
 }

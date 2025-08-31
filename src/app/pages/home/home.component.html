@@ -1,4 +1,6 @@
-<h3>Backlog</h3>
+<h3>
+  Backlog <span class="count">{{ tasks().length }}</span>
+</h3>
 <table>
   <thead>
     <tr class="tr">
@@ -17,19 +19,23 @@
     <tr class="tr-item">
       <td>{{ task.name }}</td>
       <td>{{ task.status }}</td>
-      <td>{{ task.priority || "N/A" }}</td>
       <td>
-        {{ task.dueDate ? (task.dueDate | date : "shortDate") : "N/A" }}
+        <span class="priority {{ task.priority }}">
+          {{ task.priority ? task.priority + " priority" : "N/A" }}
+        </span>
+      </td>
+      <td>
+        {{ task.dueDate ? (task.dueDate | date : "dd/MM/yyyy") : "N/A" }}
       </td>
       <td>{{ task.description || "N/A" }}</td>
       <td>
         {{ task.assignedTo?.length ? task.assignedTo?.join(", ") : "N/A" }}
       </td>
       <td>
-        {{ task.createdAt ? (task.createdAt | date : "short") : "N/A" }}
+        {{ task.createdAt ? (task.createdAt | date : "dd/MM/yyyy") : "N/A" }}
       </td>
       <td>
-        {{ task.updatedAt ? (task.updatedAt | date : "short") : "N/A" }}
+        {{ task.updatedAt ? (task.updatedAt | date : "dd/MM/yyyy") : "N/A" }}
       </td>
     </tr>
     }

@@ -18,6 +18,10 @@ export class AppNavigationService {
     return this.routes.find((r) => current.includes(r.path))?.title ?? '';
   });
 
+  isActive(path: string) {
+    return this.currentPath().startsWith(path); // ou includes si tu veux partiel
+  }
+
   constructor(private router: Router) {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))

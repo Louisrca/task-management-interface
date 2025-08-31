@@ -1,12 +1,3 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <style>
   main {
     width: 100%;
@@ -27,6 +18,7 @@
     width: 100%;
     position: sticky;
     top: 0;
+    left: 0;
     border-bottom: 1.25px solid rgba(221, 221, 221, 0.721);
   }
 
@@ -42,20 +34,18 @@
     flex-direction: column;
     background-color: rgb(255, 255, 255);
     height: 100vh;
+    overflow: auto;
   }
 
   .router-outlet-container {
     flex: 1;
     overflow-y: auto;
     padding: 1rem;
+    overflow: auto;
+    /* width: 100vw; */
   }
 
   @media screen and (max-width: 650px) {
-    .content {
-      flex-direction: column;
-      width: max-content;
-    }
-
     .divider {
       height: 1px;
       width: 100%;

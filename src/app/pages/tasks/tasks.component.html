@@ -3,6 +3,7 @@
     padding: 1.5rem;
     background-color: rgb(249, 249, 249);
     border-radius: 0.8rem;
+    width: 20rem;
   }
   li {
     text-decoration: none;
@@ -16,9 +17,10 @@
     gap: 0.4rem;
     align-items: center;
     transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
   }
   li:hover {
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
   }
 
@@ -35,85 +37,77 @@
     color: rgb(48, 48, 48);
     margin-bottom: 0.5rem;
     font-weight: 400;
-  }
-  .priority {
-    padding: 0.4rem;
-    border-radius: 1rem;
+    text-transform: uppercase;
     font-size: 0.8rem;
-    text-transform: capitalize;
   }
 
-  .high {
-    background-color: rgb(250, 189, 191);
-    color: black;
+  .addTaskContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
   }
-  .medium {
-    background-color: rgb(201, 194, 239);
-    color: black;
+  .addButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: 1px solid rgba(221, 221, 221, 0.721);
   }
-  .low {
-    background-color: rgb(214, 253, 191);
-    color: black;
+
+  .tasksComponent {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: fit-content;
   }
 </style>
 
 <div>
-  <input
-    type="text"
-    [value]="newTaskName()"
-    (input)="newTaskName.set($any($event.target).value)"
-  />
-  <select (change)="newTaskPriority.set($any($event.target).value)">
-    <option value="low" selected>Low Priority</option>
-    <option value="medium">Medium Priority</option>
-    <option value="high">High Priority</option>
-  </select>
-  <button (click)="addTask()">Add Task</button>
-  <ul>
-    <h4>
-      Todo <span class="count">{{ todoCount("not-started")() }}</span>
-    </h4>
-    @for (task of tasks(); track $index) { @if (task.status === "not-started") {
-    <li>
-      <span>
-        {{ task.name }}
-      </span>
-      <span class="priority {{ task.priority }}">
-        {{ task.priority }} Priority
-      </span>
-    </li>
-    } }
-  </ul>
-
-  <ul>
-    <h4>
-      In Progress <span class="count">{{ todoCount("in-progress")() }}</span>
-    </h4>
-    @for (task of tasks(); track $index) { @if (task.status === "in-progress") {
-    <li>
-      <span>
-        {{ task.name }}
-      </span>
-      <span class="priority {{ task.priority }}">
-        {{ task.priority }} Priority
-      </span>
-    </li>
-    } }
-  </ul>
-
-  <ul>
-    <h4>
-      Completed <span class="count">{{ todoCount("completed")() }}</span>
-    </h4>
-    @for (task of tasks(); track $index) { @if (task.status === "completed") {
-    <li>
-      <span>
-        {{ task.name }}
-      </span>
-      <span class="priority {{ task.priority }}">
-        {{ task.priority }} Priority
-      </span>
-    </li>
-    } }
-  </ul>
+  <div class="addTaskContainer">
+    <input
+      type="text"
+      [value]="newTaskName()"
+      (input)="newTaskName.set($any($event.target).value)"
+    />
+    <input
+      type="text"
+      [value]="newTaskStatus()"
+      (input)="newTaskStatus.set($any($event.target).value)"
+    />
+    <select (change)="newTaskPriority.set($any($event.target).value)">
+      <option value="low" selected>Low Priority</option>
+      <option value="medium">Medium Priority</option>
+      <option value="high">High Priority</option>
+    </select>
+    <select (change)="newTaskStatus.set($any($event.target).value)">
+      <option value="not-started" selected>Not Started</option>
+      <option value="in-progress">In Progress</option>
+      <option value="completed">Completed</option>
+    </select>
+    <button class="addButton" (click)="addTask()">
+      <ng-icon [name]="addTaskIcon"></ng-icon>
+    </button>
+  </div>
+  <div class="tasksComponent">
+    @for (status of statusList(); track $index) {
+    <ul>
+      @if (hasTasks(status)()) {
+      <h4>
+        {{ status }} <span class="count">{{ taskCount(status)() }}</span>
+      </h4>
+      } @for (task of tasks(); track $index) { @if (task.status === status) {
+      <li>
+        <span>
+          {{ task.name }}
+        </span>
+        <span class="priority {{ task.priority }}">
+          {{ task.priority }} Priority
+        </span>
+      </li>
+      } }
+    </ul>
+    }
+  </div>
 </div>
