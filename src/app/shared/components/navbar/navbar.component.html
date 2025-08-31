@@ -1,12 +1,26 @@
 <nav class="navbar">
-  <a class="pill-title" [routerLink]="['/']">TMI</a>
-  <ul class="pill-group">
-    @for (route of routes; track $index){
-    <li>
-      <a class="pill" [routerLink]="route.path">
-        <ng-icon class="pill-icon" [name]="route.icon"></ng-icon>
-      </a>
-    </li>
-    }
-  </ul>
+  <a class="pill-title" [routerLink]="['/']">tmi</a>
+  <div class="pill-container">
+    <ul class="pill-group top">
+      @for (route of routes; track $index){
+      <li>
+        <a class="pill" [routerLink]="route.path">
+          <ng-icon class="pill-icon" [name]="route.icon"></ng-icon>
+        </a>
+      </li>
+      }
+    </ul>
+    <ul class="pill-group bottom">
+      <li>
+        <a class="pill" [routerLink]="['/home']">
+          <ng-icon class="pill-icon" [name]="doorIcon"></ng-icon>
+        </a>
+      </li>
+      <li>
+        <a class="pill" [routerLink]="['/home']">
+          <ng-icon class="pill-icon" [name]="questionIcon"></ng-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>

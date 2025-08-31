@@ -1,7 +1,7 @@
 <style>
   ul {
     padding: 1.5rem;
-    background-color: rgb(248, 248, 248);
+    background-color: rgb(249, 249, 249);
     border-radius: 0.8rem;
   }
   li {
@@ -12,11 +12,29 @@
     border: 1px solid rgba(221, 221, 221, 0.721);
     border-radius: 0.8rem;
     margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  li:hover {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .count {
+    background-color: rgb(227, 227, 227);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.4rem;
+    font-size: 0.8rem;
+    margin-left: 0.2rem;
+    color: rgb(97, 97, 97);
+    font-weight: 400;
   }
   h4 {
     color: rgb(48, 48, 48);
-
     margin-bottom: 0.5rem;
+    font-weight: 400;
   }
   .priority {
     padding: 0.4rem;
@@ -26,15 +44,15 @@
   }
 
   .high {
-    background-color: #ff6b6b;
+    background-color: rgb(250, 189, 191);
     color: black;
   }
   .medium {
-    background-color: #feca57;
+    background-color: rgb(201, 194, 239);
     color: black;
   }
   .low {
-    background-color: #1dd1a1;
+    background-color: rgb(214, 253, 191);
     color: black;
   }
 </style>
@@ -52,7 +70,9 @@
   </select>
   <button (click)="addTask()">Add Task</button>
   <ul>
-    <h4>Todo {{ todoCount("not-started")() }}</h4>
+    <h4>
+      Todo <span class="count">{{ todoCount("not-started")() }}</span>
+    </h4>
     @for (task of tasks(); track $index) { @if (task.status === "not-started") {
     <li>
       <span>
@@ -66,7 +86,9 @@
   </ul>
 
   <ul>
-    <h4>In Progress {{ todoCount("in-progress")() }}</h4>
+    <h4>
+      In Progress <span class="count">{{ todoCount("in-progress")() }}</span>
+    </h4>
     @for (task of tasks(); track $index) { @if (task.status === "in-progress") {
     <li>
       <span>
@@ -80,7 +102,9 @@
   </ul>
 
   <ul>
-    <h4>Completed {{ todoCount("completed")() }}</h4>
+    <h4>
+      Completed <span class="count">{{ todoCount("completed")() }}</span>
+    </h4>
     @for (task of tasks(); track $index) { @if (task.status === "completed") {
     <li>
       <span>
