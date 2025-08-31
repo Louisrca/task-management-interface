@@ -1,0 +1,43 @@
+<style>
+  .home {
+    
+  }
+</style>
+
+<h3>Backlog</h3>
+<table>
+  <thead>
+    <tr class="tr">
+      <th>Task</th>
+      <th>Status</th>
+      <th>Priority</th>
+      <th>Due Date</th>
+      <th>Description</th>
+      <th>Assigned To</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (task of tasks(); track $index) {
+    <tr class="tr-item">
+      <td>{{ task.name }}</td>
+      <td>{{ task.status }}</td>
+      <td>{{ task.priority || "N/A" }}</td>
+      <td>
+        {{ task.dueDate ? (task.dueDate | date : "shortDate") : "N/A" }}
+      </td>
+      <td>{{ task.description || "N/A" }}</td>
+      <td>
+        {{ task.assignedTo?.length ? task.assignedTo?.join(", ") : "N/A" }}
+      </td>
+      <td>
+        {{ task.createdAt ? (task.createdAt | date : "short") : "N/A" }}
+      </td>
+      <td>
+        {{ task.updatedAt ? (task.updatedAt | date : "short") : "N/A" }}
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

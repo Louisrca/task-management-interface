@@ -1,0 +1,54 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .pill-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin-top: 4rem;
+
+    .pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.8rem;
+      background: white;
+      color: black;
+      transition: background 0.3s, color 0.3s;
+
+      .pill-icon {
+        color: black;
+        fill: currentColor;
+        transition: color 0.3s, fill 0.3s;
+      }
+      &:hover {
+        background: #000000;
+        color: white;
+        cursor: pointer;
+        .pill-icon {
+          color: white; // icône devient blanche quand le parent est hover
+        }
+      }
+    }
+  }
+  .pill-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+    padding-top: 2rem;
+    font-family: "ChillaxFont";
+    font-weight: 800;
+  }
+}

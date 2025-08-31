@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "ChillaxFont";
+  src: url("/assets/fonts/Chillax.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
 :host {
   --bright-blue: oklch(51.01% 0.274 263.83);
   --electric-violet: oklch(53.18% 0.28 296.97);
@@ -41,4 +48,14 @@ body {
   box-sizing: border-box;
   height: 100vh;
   width: 100vw;
+}
+
+h1 {
+  margin: 1rem;
+  font-size: 1.6rem;
+}
+
+h2 {
+  margin: 1.4rem 0;
+  font-size: 1.2rem;
 }

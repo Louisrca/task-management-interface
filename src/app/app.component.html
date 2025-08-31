@@ -25,10 +25,13 @@
 
   .header {
     width: 100%;
-    border-bottom: 1.25px solid rgba(221, 221, 221, 0.721);
     position: sticky;
     top: 0;
-    background: white;
+  }
+
+  .header h1 {
+    font-family: "ChillaxFont";
+    font-weight: 400 !important;
   }
 
   .content {
@@ -38,19 +41,14 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    background-color: rgb(255, 255, 255);
+    padding: 0.5rem 1rem;
+    gap: 1rem;
   }
 
   .router-outlet-container {
     flex: 1;
     overflow-y: auto;
-  }
-
-  .content h1 {
-    margin-top: 1.75rem;
-  }
-
-  .content p {
-    margin-top: 1.5rem;
   }
 
   @media screen and (max-width: 650px) {
@@ -75,7 +73,7 @@
 
   <section class="content">
     <header class="header">
-      <h2>{{ url }}</h2>
+      <h1>{{ title() }}</h1>
     </header>
     <div class="router-outlet-container">
       <router-outlet></router-outlet>

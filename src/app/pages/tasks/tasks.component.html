@@ -1,0 +1,95 @@
+<style>
+  ul {
+    padding: 1.5rem;
+    background-color: rgb(248, 248, 248);
+    border-radius: 0.8rem;
+  }
+  li {
+    text-decoration: none;
+    list-style: none;
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid rgba(221, 221, 221, 0.721);
+    border-radius: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  h4 {
+    color: rgb(48, 48, 48);
+
+    margin-bottom: 0.5rem;
+  }
+  .priority {
+    padding: 0.4rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+  }
+
+  .high {
+    background-color: #ff6b6b;
+    color: black;
+  }
+  .medium {
+    background-color: #feca57;
+    color: black;
+  }
+  .low {
+    background-color: #1dd1a1;
+    color: black;
+  }
+</style>
+
+<div>
+  <input
+    type="text"
+    [value]="newTaskName()"
+    (input)="newTaskName.set($any($event.target).value)"
+  />
+  <select (change)="newTaskPriority.set($any($event.target).value)">
+    <option value="low" selected>Low Priority</option>
+    <option value="medium">Medium Priority</option>
+    <option value="high">High Priority</option>
+  </select>
+  <button (click)="addTask()">Add Task</button>
+  <ul>
+    <h4>Todo {{ todoCount("not-started")() }}</h4>
+    @for (task of tasks(); track $index) { @if (task.status === "not-started") {
+    <li>
+      <span>
+        {{ task.name }}
+      </span>
+      <span class="priority {{ task.priority }}">
+        {{ task.priority }} Priority
+      </span>
+    </li>
+    } }
+  </ul>
+
+  <ul>
+    <h4>In Progress {{ todoCount("in-progress")() }}</h4>
+    @for (task of tasks(); track $index) { @if (task.status === "in-progress") {
+    <li>
+      <span>
+        {{ task.name }}
+      </span>
+      <span class="priority {{ task.priority }}">
+        {{ task.priority }} Priority
+      </span>
+    </li>
+    } }
+  </ul>
+
+  <ul>
+    <h4>Completed {{ todoCount("completed")() }}</h4>
+    @for (task of tasks(); track $index) { @if (task.status === "completed") {
+    <li>
+      <span>
+        {{ task.name }}
+      </span>
+      <span class="priority {{ task.priority }}">
+        {{ task.priority }} Priority
+      </span>
+    </li>
+    } }
+  </ul>
+</div>
