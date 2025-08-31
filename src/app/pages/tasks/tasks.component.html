@@ -4,6 +4,7 @@
     background-color: rgb(249, 249, 249);
     border-radius: 0.8rem;
     width: 20rem;
+    margin: 0;
   }
   li {
     text-decoration: none;
@@ -41,55 +42,45 @@
     font-size: 0.8rem;
   }
 
-  .addTaskContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-    width: fit-content;
-  }
-  .addButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    border: 1px solid rgba(221, 221, 221, 0.721);
-  }
-
   .tasksComponent {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    gap: 1rem;
     width: fit-content;
+  }
+
+  .add-task-button {
+    border: 1px solid rgba(221, 221, 221, 0.721);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .add-task-button:hover {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
   }
 </style>
 
 <div>
-  <div class="addTaskContainer">
-    <input
-      type="text"
-      [value]="newTaskName()"
-      (input)="newTaskName.set($any($event.target).value)"
-    />
-    <input
-      type="text"
-      [value]="newTaskStatus()"
-      (input)="newTaskStatus.set($any($event.target).value)"
-    />
-    <select (change)="newTaskPriority.set($any($event.target).value)">
-      <option value="low" selected>Low Priority</option>
-      <option value="medium">Medium Priority</option>
-      <option value="high">High Priority</option>
-    </select>
-    <select (change)="newTaskStatus.set($any($event.target).value)">
-      <option value="not-started" selected>Not Started</option>
-      <option value="in-progress">In Progress</option>
-      <option value="completed">Completed</option>
-    </select>
-    <button class="addButton" (click)="addTask()">
-      <ng-icon [name]="addTaskIcon"></ng-icon>
+  <div class="header">
+    <h3>
+      Kanban <span class="count">{{ tasks().length }}</span>
+    </h3>
+    <button (click)="setOpenSidepanel()" class="add-task-button">
+      Add Task
     </button>
   </div>
+
   <div class="tasksComponent">
     @for (status of statusList(); track $index) {
     <ul>
@@ -98,7 +89,7 @@
         {{ status }} <span class="count">{{ taskCount(status)() }}</span>
       </h4>
       } @for (task of tasks(); track $index) { @if (task.status === status) {
-      <li>
+      <li (click)="openTaskDetails(task.id)">
         <span>
           {{ task.name }}
         </span>
@@ -110,4 +101,9 @@
     </ul>
     }
   </div>
+  <app-sidepanel [isOpen]="openSidepanel"></app-sidepanel>
+  <app-edit-sidepanel
+    [isOpen]="openEditSidepanel"
+    [taskId]="selectedTaskId()"
+  ></app-edit-sidepanel>
 </div>

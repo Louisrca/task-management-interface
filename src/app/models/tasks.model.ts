@@ -1,4 +1,5 @@
 export type Tasks = {
+  id: string;
   name: string;
   status: string;
   priority?: string;

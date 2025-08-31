@@ -1,0 +1,52 @@
+<div class="sidepanel-container" [ngClass]="{ isOpen: isOpen() }">
+  <div class="sidepanel-header">
+    <button class="close-button" (click)="closeSidepanel()">
+      <ng-icon class="close-icon" [name]="closeRightPanelIcon"></ng-icon>
+    </button>
+    <h2>Task Details</h2>
+  </div>
+
+  <div class="addTaskContainer">
+    <span>
+      <p><strong>Task Name:</strong> {{ taskDetails?.name }}</p>
+      <p><strong>Status:</strong> {{ taskDetails?.status }}</p>
+      <p><strong>Priority:</strong> {{ taskDetails?.priority || "N/A" }}</p>
+      <p>
+        <strong>Due Date:</strong>
+        {{
+          taskDetails?.dueDate
+            ? (taskDetails?.dueDate | date : "dd/MM/yyyy")
+            : "N/A"
+        }}
+      </p>
+      <p>
+        <strong>Description:</strong>
+        {{ taskDetails?.description || "N/A" }}
+      </p>
+      <p>
+        <strong>Assigned To:</strong>
+        {{
+          taskDetails?.assignedTo?.length
+            ? taskDetails?.assignedTo?.join(", ")
+            : "N/A"
+        }}
+      </p>
+      <p>
+        <strong>Created At:</strong>
+        {{
+          taskDetails?.createdAt
+            ? (taskDetails?.createdAt | date : "dd/MM/yyyy")
+            : "N/A"
+        }}
+      </p>
+      <p>
+        <strong>Updated At:</strong>
+        {{
+          taskDetails?.updatedAt
+            ? (taskDetails?.updatedAt | date : "dd/MM/yyyy")
+            : "N/A"
+        }}
+      </p>
+    </span>
+  </div>
+</div>

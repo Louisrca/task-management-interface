@@ -1,0 +1,52 @@
+.sidepanel-container {
+  display: none;
+}
+.isOpen {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(255, 255, 255);
+  box-shadow: -6px 0 14px rgba(0, 0, 0, 0.1);
+  width: 30rem;
+}
+.sidepanel-header {
+  display: flex;
+  align-items: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(221, 221, 221, 0.721);
+  padding: 0 1rem;
+}
+
+.addTaskContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0 1rem;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border: 1px solid rgba(221, 221, 221, 0.721);
+}
+
+.close-button {
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem 0 0;
+  padding: 0;
+
+  .close-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}

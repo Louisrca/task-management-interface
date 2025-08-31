@@ -8,7 +8,7 @@ export class AppNavigationService {
   private currentPath = signal('');
 
   routes: NavLink[] = [
-    { path: '/home', title: 'Dashboard', icon: 'akarGrid' },
+    { path: '/dashboard', title: 'Dashboard', icon: 'akarGrid' },
     { path: '/tasks', title: 'Tasks', icon: 'akarCalendar' },
     { path: '/messages', title: 'Messages', icon: 'akarInbox' },
   ];

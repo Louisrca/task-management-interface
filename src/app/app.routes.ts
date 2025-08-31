@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'messages', component: MessagesComponent },
   { path: 'tasks', component: TasksComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];

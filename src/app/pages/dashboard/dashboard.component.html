@@ -1,0 +1,55 @@
+<div class="header">
+  <h3>
+    Backlog <span class="count">{{ tasks().length }}</span>
+  </h3>
+  <button (click)="setOpenSidepanel()" class="add-task-button">Add Task</button>
+</div>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr class="tr">
+        <th>ID</th>
+        <th>Task</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Due Date</th>
+        <th>Description</th>
+        <th>Assigned To</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (task of tasks(); track task.id) {
+      <tr class="tr-item" (click)="openTaskDetails(task.id)">
+        <td>{{ task.id }}</td>
+        <td>{{ task.name }}</td>
+        <td>{{ task.status }}</td>
+        <td>
+          <span class="priority {{ task.priority }}">
+            {{ task.priority ? task.priority + " priority" : "N/A" }}
+          </span>
+        </td>
+        <td>
+          {{ task.dueDate ? (task.dueDate | date : "dd/MM/yyyy") : "N/A" }}
+        </td>
+        <td>{{ task.description || "N/A" }}</td>
+        <td>
+          {{ task.assignedTo?.length ? task.assignedTo?.join(", ") : "N/A" }}
+        </td>
+        <td>
+          {{ task.createdAt ? (task.createdAt | date : "dd/MM/yyyy") : "N/A" }}
+        </td>
+        <td>
+          {{ task.updatedAt ? (task.updatedAt | date : "dd/MM/yyyy") : "N/A" }}
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <app-sidepanel [isOpen]="openSidepanel"></app-sidepanel>
+  <app-edit-sidepanel
+    [isOpen]="openEditSidepanel"
+    [taskId]="selectedTaskId()"
+  ></app-edit-sidepanel>
+</div>

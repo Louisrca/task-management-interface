@@ -1,0 +1,37 @@
+<div class="sidepanel-container" [ngClass]="{ isOpen: isOpen() }">
+  <div class="sidepanel-header">
+    <button class="close-button" (click)="closeSidepanel()">
+      <ng-icon class="close-icon" [name]="closeRightPanelIcon"></ng-icon>
+    </button>
+    <h2>Create Task</h2>
+  </div>
+  <p>Create a new task in the project</p>
+
+  <div class="addTaskContainer">
+    <input
+      type="text"
+      [value]="newTaskName()"
+      (input)="newTaskName.set($any($event.target).value)"
+      placeholder="Task Name"
+    />
+    <input
+      type="text"
+      [value]="newTaskStatus()"
+      (input)="newTaskStatus.set($any($event.target).value)"
+      placeholder="Task Status"
+    />
+    <select (change)="newTaskPriority.set($any($event.target).value)">
+      <option value="low" selected>Low Priority</option>
+      <option value="medium">Medium Priority</option>
+      <option value="high">High Priority</option>
+    </select>
+    <select (change)="newTaskStatus.set($any($event.target).value)">
+      <option value="not-started" selected>Not Started</option>
+      <option value="in-progress">In Progress</option>
+      <option value="completed">Completed</option>
+    </select>
+    <button class="addButton" (click)="addTask()">
+      <ng-icon [name]="addTaskIcon"></ng-icon>
+    </button>
+  </div>
+</div>

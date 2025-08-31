@@ -3,6 +3,7 @@ import { Tasks } from '../../models/tasks.model';
 
 export const tasks = signal<Tasks[]>([
   {
+    id: '1ea2b3c4-d5f6-7g8h-9i0j-k1l2m3n4o5p6',
     name: 'Styling Tasks components',
     status: 'not-started',
     priority: 'medium',
@@ -13,6 +14,7 @@ export const tasks = signal<Tasks[]>([
     updatedAt: new Date('2025-06-23'),
   },
   {
+    id: '2ea2b3c4-d5f6-7g8h-9i0j-k1l2m3n4o5p6',
     name: 'Add Backlog into Home Page',
     status: 'in-progress',
     priority: 'high',
@@ -23,6 +25,7 @@ export const tasks = signal<Tasks[]>([
     updatedAt: new Date('2025-06-25'),
   },
   {
+    id: '3ea2b3c4-d5f6-7g8h-9i0j-k1l2m3n4o5p6',
     name: 'Implement Task Completion',
     status: 'completed',
     priority: 'low',
